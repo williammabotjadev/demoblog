@@ -7,7 +7,27 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 
+import axios from 'axios';
+
 export default function HomeList() {
+
+  const [articles, setArticles] = React.useState(null);
+
+  function getArticles()
+  {
+      const url = "https://localhost:44446";
+      axios.get(url)
+      .then(res => {
+        console.log(res);
+        setArticles(state => res);
+      })
+      .catch(err => console.log(err));
+  }
+
+  React.useEffect(() => {
+    getArticles();
+  }, [])
+
   return (
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       <ListItem alignItems="flex-start">
