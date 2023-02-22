@@ -4,6 +4,8 @@ import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 
+import axios from 'axios';
+
 export default function HomeForm() {
 
   const [name, setName] = React.useState(null);
@@ -17,11 +19,13 @@ export default function HomeForm() {
       setEmail(state => e.target.email);
       setPhone(state => e.target.phone);
       setMessage(state => e.target.message);
+      sendMessage();
   }
 
   function sendMessage()
   {
-    const url = "localhost:44446/api/contacts";
+    const url = "https://localhost:44446/api/contacts";
+    
     const req_headers = {
       "ContentType": "application/json"
     };
