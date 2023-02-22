@@ -25,7 +25,7 @@ export default function HomeForm() {
   function sendMessage()
   {
     const url = "https://localhost:44446/api/contacts";
-    
+
     const req_headers = {
       "ContentType": "application/json"
     };
@@ -79,7 +79,7 @@ export default function HomeForm() {
           label="Multiline"
           multiline
           rows={4}
-          defaultValue="Default Value"
+          variant="standard"
         />
       </Box>
       <Box>
