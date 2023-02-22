@@ -31,6 +31,7 @@ export default function HomeForm() {
     };
 
     const req_body = {
+      id: Math.random(),
       name: name,
       email: email,
       phone: phone,
@@ -51,7 +52,6 @@ export default function HomeForm() {
       sx={{
         '& .MuiTextField-root': { m: 1, width: '25ch' },
       }}
-      noValidate
       autoComplete="off"
     >
       <Box>
@@ -64,12 +64,14 @@ export default function HomeForm() {
         <TextField
           id="email"
           name="email"
+          inputProps={{ pattern: '^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$' }} 
           label="Email"
           variant="standard"
         />
         <TextField
           id="phone"
           name="phone"
+          inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} 
           label="Phone"
           variant="standard"
         />
