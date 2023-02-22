@@ -1,10 +1,46 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
+import Box from '@mui/material/Box';
 
 export default function HomeForm() {
+
+  const [name, setName] = React.useState(null);
+  const [email, setEmail] = React.useState(null);
+  const [phone, setPhone] = React.useState(null);
+  const [message, setMessage] = React.useState(null);
+
+  function handleSubmit(e)
+  {
+      setName(state => e.target.name);
+      setEmail(state => e.target.email);
+      setPhone(state => e.target.phone);
+      setMessage(state => e.target.message);
+  }
+
+  function sendMessage()
+  {
+    const url = "localhost:44446/api/contacts";
+    const req_headers = {
+      "ContentType": "application/json"
+    };
+
+    const req_body = {
+      name: name,
+      email: email,
+      phone: phone,
+      message: message
+    }
+
+    axios.post(url, req_body, {
+        headers: req_headers
+    })
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+
+  }
+
   return (
     <Box
       component="form"
@@ -17,21 +53,25 @@ export default function HomeForm() {
       <Box>
         <TextField
           id="name"
+          name="name"
           label="Name"
           variant="standard"
         />
         <TextField
           id="email"
+          name="email"
           label="Email"
           variant="standard"
         />
         <TextField
           id="phone"
+          name="phone"
           label="Phone"
           variant="standard"
         />
         <TextField
-          id="outlined-multiline-static"
+          id="message"
+          name="message"
           label="Multiline"
           multiline
           rows={4}
@@ -40,7 +80,9 @@ export default function HomeForm() {
       </Box>
       <Box>
       <Stack direction="row" spacing={2}>
-        <Button variant="contained">Send</Button>
+        <Button 
+            onCanPlay={handleSubmit}
+            variant="contained">Send</Button>
       </Stack>
       </Box>
     </Box>
