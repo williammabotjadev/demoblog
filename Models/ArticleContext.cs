@@ -4,7 +4,7 @@ namespace blogdemo.Models;
 
 public class ArticleContext : DbContext
 {
-    public TodoContext(DbContextOptions<ArticleContext> options)
+    public ArticleContext(DbContextOptions<ArticleContext> options)
         : base(options)
     {
     }
