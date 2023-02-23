@@ -21,6 +21,7 @@ export default function SingleArticle() {
 
   function getArticle()
   {
+    console.log(window.location.params)
     const id = 23;
     const url = `https://localhost:44446/api/articles/${id}`;
 
@@ -39,16 +40,20 @@ export default function SingleArticle() {
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
             <br />
-            <Typography variant="h3">
-                {article.title}
+            <Typography
+              style={{
+                margin: '80px 0px 40px 0px'
+              }}
+              variant="h3">
+                {article?.title}
             </Typography>
             <br />
             <Typography variant="body1">
-                {article.body}
+                {article?.body}
             </Typography>
             <br />
-            <Typography variant="body2">
-                {article.author}
+            <Typography style={{ margin: '40px 0px 0px 0px' }} variant="body2">
+                {article?.author}
             </Typography>
       </Grid>
     </Box>
