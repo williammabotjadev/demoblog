@@ -12,14 +12,10 @@ export default function HomeForm() {
   const [email, setEmail] = React.useState(null);
   const [phone, setPhone] = React.useState(null);
   const [message, setMessage] = React.useState(null);
+  const [messageSent, setMessageSent] = React.useState(false);
 
   function handleSubmit(e)
   {
-      console.log(e.target); 
-      setName(state => e.target.name);
-      setEmail(state => e.target.email);
-      setPhone(state => e.target.phone);
-      setMessage(state => e.target.message);
       sendMessage();
   }
 
@@ -32,7 +28,7 @@ export default function HomeForm() {
     };
 
     const req_body = {
-      id: Math.random(),
+      id: parseInt(Math.random() * 1000),
       name: name,
       email: email,
       phone: phone,
@@ -42,16 +38,30 @@ export default function HomeForm() {
     axios.post(url, req_body, {
         headers: req_headers
     })
-    .then(res => console.log(res))
+    .then(res => {
+      console.log(res);
+      if (res.status == 201)
+      {
+        setMessageSent(state => true);
+      }})
     .catch(err => console.log(err));
 
   }
 
   return (
+    {messageSent ? <Typography
+            style={{
+              margin: '80px 40px 0px 60px'
+            }}>Your Message was Successfully Sent!</Typography> :
     <Box
       component="form"
       sx={{
         '& .MuiTextField-root': { m: 1, width: '25ch' },
+      }}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center'
       }}
     >
       <Box
@@ -68,6 +78,9 @@ export default function HomeForm() {
           name="name"
           label="Name"
           variant="standard"
+          onChange={
+            (e) => setName(state => e.target.value)
+          }
         />
         <TextField
           id="email"
@@ -75,6 +88,9 @@ export default function HomeForm() {
           inputProps={{ pattern: '^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$' }} 
           label="Email"
           variant="standard"
+          onChange={
+            (e) => setEmail(state => e.target.value)
+          }
         />
         <TextField
           id="phone"
@@ -82,6 +98,9 @@ export default function HomeForm() {
           inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} 
           label="Phone"
           variant="standard"
+          onChange={
+            (e) => setPhone(state => e.target.value)
+          }
         />
         <TextField
           id="message"
@@ -90,15 +109,23 @@ export default function HomeForm() {
           multiline
           rows={4}
           variant="standard"
+          onChange={
+            (e) => setMessage(state => e.target.value)
+          }
         />
       </Box>
-      <Box>
+      <Box
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
       <Stack direction="row" spacing={2}>
         <Button 
-            onCanPlay={handleSubmit}
+            onClick={handleSubmit}
             variant="contained">Send</Button>
       </Stack>
       </Box>
-    </Box>
+    </Box>}
   );
 }
