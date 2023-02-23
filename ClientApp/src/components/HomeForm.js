@@ -15,6 +15,7 @@ export default function HomeForm() {
 
   function handleSubmit(e)
   {
+      console.log(e.target); 
       setName(state => e.target.name);
       setEmail(state => e.target.email);
       setPhone(state => e.target.phone);
@@ -52,9 +53,16 @@ export default function HomeForm() {
       sx={{
         '& .MuiTextField-root': { m: 1, width: '25ch' },
       }}
-      autoComplete="off"
     >
-      <Box>
+      <Box
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: '10px'
+        }}
+      >
         <TextField
           id="name"
           name="name"
@@ -78,7 +86,7 @@ export default function HomeForm() {
         <TextField
           id="message"
           name="message"
-          label="Multiline"
+          label="Message"
           multiline
           rows={4}
           variant="standard"
