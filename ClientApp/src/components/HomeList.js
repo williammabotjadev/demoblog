@@ -27,13 +27,17 @@ export default function HomeList() {
     getArticles();
   }, [])
 
+  React.useEffect(() => {
+    console.log("Articles fetched");
+  }, [articles])
+
   return (
     <>
       {articles?.map((article, index) => 
        <>
         <List sx={{ width: '100%', maxWidth: 640, bgcolor: 'background.paper' }}>
           <ListItem key={index} alignItems="flex-start">
-            <Link to={`https://localhost:44446/api/articles/${article.id}`}>
+            <Link href={`/article/${article.id}`}>
             <ListItemText
               primary={article.title}
               secondary={
@@ -52,7 +56,7 @@ export default function HomeList() {
          
         </List> 
         </>
-      )};
+      )}
     </>
   );
 }

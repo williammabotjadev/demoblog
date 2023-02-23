@@ -3,6 +3,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
 import axios from 'axios';
 
@@ -40,7 +41,7 @@ export default function HomeForm() {
     })
     .then(res => {
       console.log(res);
-      if (res.status == 201)
+      if (res.status === 201)
       {
         setMessageSent(state => true);
       }})
