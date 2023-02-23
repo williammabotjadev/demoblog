@@ -33,5 +33,6 @@
 - To Create additional articles, you can use /api/articles POST with the appropriate body.
 - To Retrieve a list of articles in the database, you can use /api/articles GET.
 - If you're trying to check whether the contacts are created, you can use /api/contacts GET.
+- if you encounter and issue with the node.js build or launch, please ensure rimraf is installed in package.json
 
 Enjoy using the App!
