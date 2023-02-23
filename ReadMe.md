@@ -3,6 +3,7 @@
 ### Create with React.js and ASP.NET Core
 
 - To Run the Project you need to <code>git clone</code> this repo
+- cd into the 'demoblog' directory and run <pre>dotnet run</pre>
 
 ### Requirements
 
@@ -26,5 +27,11 @@
 - The <code>src</code> directory has all the components and respective pages, which is mainly centered about the App page.
 - Axios is the basic means of communication between client and server and is making calls for each part of the appliation journey.
 - You can also run the client independently using <code>npm start</code> in the ClientApp directory.
+
+#### Testing Notes
+
+- To Create additional articles, you can use /api/articles POST with the appropriate body.
+- To Retrieve a list of articles in the database, you can use /api/articles GET.
+- If you're trying to check whether the contacts are created, you can use /api/contacts GET.
 
 Enjoy using the App!
