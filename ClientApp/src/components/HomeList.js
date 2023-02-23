@@ -30,7 +30,7 @@ export default function HomeList() {
 
   return (
     <>
-      {articles.map((article, index) => 
+      {articles?.map((article, index) => 
        <>
         <List sx={{ width: '100%', maxWidth: 640, bgcolor: 'background.paper' }}>
           <ListItem alignItems="flex-start">
