@@ -27,6 +27,7 @@
 - The <code>src</code> directory has all the components and respective pages, which is mainly centered around the App page.
 - Axios is the basic means of communication between client and server and is making calls for each part of the appliation journey.
 - You can also run the client independently using <code>npm start</code> in the ClientApp directory.
+- The Contact Form includes basic validation by means of Regular Expressions, where the phone field only allows numeric values and the email field only allows valid emails.
 
 #### Testing Notes
 
