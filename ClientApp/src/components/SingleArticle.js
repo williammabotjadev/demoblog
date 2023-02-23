@@ -21,8 +21,8 @@ export default function SingleArticle() {
 
   function getArticle()
   {
-    console.log(window.location.params)
-    const id = 23;
+   
+    const id =  parseInt(window.location.pathname.replace("/article/", ""));
     const url = `https://localhost:44446/api/articles/${id}`;
 
     axios.get(url)
