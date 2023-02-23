@@ -1,6 +1,6 @@
 ## Demo Blog App
 
-### Create with React.js and ASP.NET Core
+### Created with React.js and ASP.NET Core
 
 - To Run the Project you need to <code>git clone</code> this repo
 - cd into the 'demoblog' directory and run <pre>dotnet run</pre>
