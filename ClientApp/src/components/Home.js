@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import Box from '@mui/material/Box';
 import HomeList from '../components/HomeList';
+import Typography from '@mui/material/Typography';
 
 import axios from 'axios';
 
 export default function Home() {
+
+  const [articlesFetched, setArticlesFetched] = React.useState(false);
   
     const initialArticles = [
       {
@@ -41,12 +44,39 @@ export default function Home() {
 
     function postArticle(article)
     {
+        const url = `https://localhost:44446/api/articles`;
+        const data = {
+          Id: article.id,
+          Title: article.title,
+          Body: article.body,
+          Author: article.Author
+        };
 
+        axios.post(url, data)
+        .then(res => {
+          setArticlesFetched(state => true);
+          console.log(res);
+        })
+        .catch(err => console.log(err));
     }
+
+    React.useEffect(() => {
+      for (let article of initialArticles)
+      {
+        postArticle(article);
+      }
+    }, []);
 
     return (
       <Box>
-          <HomeList />
+        {articlesFetched ? 
+        <Typography
+          style={{
+            margin: '80px 40px 0px 40px'
+          }}
+          variant="h5"
+        >Articles not yet fetched... loading...</Typography> :
+          <HomeList />}
       </Box>
     );
   

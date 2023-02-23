@@ -1,6 +1,6 @@
-import { ContactForm } from "./components/ContactForm";
-import { Home } from "./components/Home";
-import { SingleArticle } from "./components/SingleArticle";
+import ContactForm from "./components/ContactForm";
+import Home from "./components/Home";
+import SingleArticle from "./components/SingleArticle";
 
 const AppRoutes = [
   {
