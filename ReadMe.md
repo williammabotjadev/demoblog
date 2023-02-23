@@ -24,7 +24,7 @@
 #### Frontend
 
 - The Frontend has a proxy setup file which points to the context, api, and has the appropriate Create React App structure.
-- The <code>src</code> directory has all the components and respective pages, which is mainly centered about the App page.
+- The <code>src</code> directory has all the components and respective pages, which is mainly centered around the App page.
 - Axios is the basic means of communication between client and server and is making calls for each part of the appliation journey.
 - You can also run the client independently using <code>npm start</code> in the ClientApp directory.
 
