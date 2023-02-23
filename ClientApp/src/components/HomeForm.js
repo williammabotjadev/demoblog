@@ -49,10 +49,11 @@ export default function HomeForm() {
   }
 
   return (
+    <>
     {messageSent ? <Typography
-            style={{
-              margin: '80px 40px 0px 60px'
-            }}>Your Message was Successfully Sent!</Typography> :
+                style={{
+                  margin: '80px 40px 0px 60px'
+                }}>Your Message was Successfully Sent!</Typography> :
     <Box
       component="form"
       sx={{
@@ -127,5 +128,6 @@ export default function HomeForm() {
       </Stack>
       </Box>
     </Box>}
+    </>
   );
 }
